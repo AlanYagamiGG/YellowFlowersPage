@@ -1,0 +1,261 @@
+/* --- Variables de Diseño --- */
+:root {
+    --primary-yellow: #FFD700;
+    --flower-yellow: #FFE066;
+    --soft-yellow: #FFF9E6;
+    --gold: #DAA520;
+    --text-dark: #5c4e16;
+    --stem-green: #228B22;
+    --glass-bg: rgba(255, 255, 255, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.6);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(135deg, #FFF9E6 0%, #FFF0B3 50%, #FFE066 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    color: var(--text-dark);
+}
+
+/* --- Tipografías --- */
+h1, h2 {
+    font-family: 'Dancing Script', cursive;
+    color: var(--gold);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+h1 { font-size: 3.5rem; margin-bottom: 10px; }
+h2 { font-size: 3rem; margin-bottom: 15px; }
+.subtitle { font-size: 1.2rem; margin-bottom: 30px; font-weight: 500; }
+
+/* --- Contenedor y Efecto Glassmorphism --- */
+.container {
+    position: relative;
+    z-index: 10;
+    width: 90%;
+    max-width: 700px;
+    text-align: center;
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 40px 30px;
+    box-shadow: 0 8px 32px rgba(218, 165, 32, 0.15);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+/* --- Botones --- */
+.main-btn {
+    background: var(--primary-yellow);
+    color: var(--text-dark);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 15px 35px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+.main-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    background: #ffde33;
+}
+
+#music-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    background: var(--glass-bg);
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--glass-border);
+    padding: 10px 15px;
+    border-radius: 30px;
+    cursor: pointer;
+    color: var(--text-dark);
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+/* --- Clases de Animación y Utilidad --- */
+.hidden { display: none !important; }
+.fade-out { opacity: 0; transform: scale(0.95); pointer-events: none; }
+.fade-in { animation: fadeIn 1.5s ease forwards; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.flower-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* --- Estilos del Texto Tipeado --- */
+#typed-text-container {
+    text-align: left;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.paragraph { margin-bottom: 15px; min-height: 25px; }
+
+/* --- Animación de Lluvia de Pétalos --- */
+#petals-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.petal {
+    position: absolute;
+    background: radial-gradient(circle at 30% 30%, #fffacd, #ffd700);
+    border-radius: 15px 0 15px 0;
+    opacity: 0.7;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% { top: -10%; transform: translateX(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.8; }
+    100% { top: 110%; transform: translateX(100px) rotate(360deg); opacity: 0; }
+}
+
+/* --- NUEVA Animación de Florecimiento Final --- */
+.bouquet-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.flower-bloom {
+    position: relative;
+    width: 100px;
+    height: 150px;
+    margin-bottom: -30px;
+    transform: scale(0.1) translateY(50px);
+    opacity: 0;
+}
+
+/* Clase que activa la animación */
+.flower-bloom.start-blooming {
+    animation: bloomGrow 2.5s ease-out forwards;
+}
+
+@keyframes bloomGrow {
+    0% { transform: scale(0.1) translateY(50px); opacity: 0; }
+    50% { transform: scale(1.1) translateY(-10px); opacity: 1; }
+    100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.stem {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 8px;
+    height: 100px;
+    background: var(--stem-green);
+    border-radius: 4px;
+    transform: translateX(-50%);
+}
+
+.leaf {
+    position: absolute;
+    width: 30px;
+    height: 15px;
+    background: var(--stem-green);
+    border-radius: 15px 15px 0 0;
+    transform-origin: bottom center;
+}
+
+.leaf-1 { bottom: 50px; left: 15px; transform: rotate(-45deg); }
+.leaf-2 { bottom: 30px; left: 55px; transform: rotate(45deg); }
+
+.petals-circle {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    width: 80px;
+    height: 80px;
+    animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate { 100% { transform: rotate(360deg); } }
+
+.petal-piece {
+    position: absolute;
+    top: 0;
+    left: 32px;
+    width: 16px;
+    height: 35px;
+    background: var(--flower-yellow);
+    border-radius: 10px 10px 0 0;
+    transform-origin: bottom center;
+}
+
+/* Posiciones de los pétalos */
+.p1 { transform: rotate(0deg); }
+.p2 { transform: rotate(45deg); }
+.p3 { transform: rotate(90deg); }
+.p4 { transform: rotate(135deg); }
+.p5 { transform: rotate(180deg); }
+.p6 { transform: rotate(225deg); }
+.p7 { transform: rotate(270deg); }
+.p8 { transform: rotate(315deg); }
+
+.central-disk {
+    position: absolute;
+    top: 15px;
+    left: 25px;
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle at center, #8B4513, #A52A2A);
+    border-radius: 50%;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+}
+
+/* Responsividad */
+@media (max-width: 600px) {
+    h1 { font-size: 2.8rem; }
+    h2 { font-size: 2.2rem; }
+    .glass-card { padding: 30px 20px; }
+    #typed-text-container { font-size: 1rem; }
+    .flower-bloom { width: 80px; height: 120px; }
+    .central-disk { width: 40px; height: 40px; top: 12px; left: 20px; }
+    .petals-circle { width: 64px; height: 64px; top: 0; left: 8px; }
+    .petal-piece { width: 12px; height: 28px; left: 26px; }
+}
