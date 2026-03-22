@@ -8,11 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const bgMusic         = document.getElementById("bg-music");
 
     const message = [
-        "SABES LO MUY ESPECIAL QUE ERES PARA MI, ya un año desde que volvimos a ser amigos, no sabes lo mucho que agradezco que lo fuéramos.",
-        "Me has ayudado y apoyado tanto que en verdad no acabaría jamás en agradecerte todo, y es gracioso porque sé que dirías que no lo tengo que hacer, que lo haces porque me quieres muchísimo, aún así me gustaría poder agradecértelo algún día.",
+        "Sabes lo muy especial que eres para mi, ya un año desde que volvimos a ser amigos, no sabes lo mucho que agradezco que lo fuéramos.",
+        "Me has ayudado y apoyado tanto que en verdad no acabaría jamás en agradecerte todo, y sé que dirías que no lo tengo que hacer, que lo haces porque me quieres muchísimo, aún así me gustaría poder agradecértelo algún día.",
         "Así que toma esto como una promesa de que tendrás tus flores amarillas en algún otro 21 de marzo, a menos que me dejes de hablar pq algún inseguro no entienda nuestra amistad :b.",
         "Te quiero mucho Jatz, en verdad que me hubiera encantado poder darte unas reales, pero así como tú luego me dices que algún día me vas a llevar a esa convención de anime, que me vas a comprar juegos...",
-        "Bueno, ahora yo te digo que algún día te voy a comprar las flores que te mereces, solo dame chance."
+        "Bueno, ahora yo te digo que algún día te voy a comprar las flores que te mereces."
     ];
 
     // Control de música
